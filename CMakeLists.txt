@@ -14,6 +14,10 @@ project(
     LANGUAGES CXX
 )
 
+find_package(OpenGL REQUIRED)
+find_package(X11 REQUIRED)
+find_package(PNG REQUIRED)
+
 # It is always easier to navigate in an IDE when projects are organized in folders.
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -31,7 +35,11 @@ add_executable(ball_pit
     src/physics/physics-ball.cpp
     src/physics/physics-engine.cpp
 )
-
+target_link_libraries(ball_pit 
+    OpenGL::GL
+    X11::X11
+    PNG::PNG
+)
 # Only support statically linking for now.
 target_compile_definitions(ball_pit PRIVATE
                             SEQUENTIAL_PROCESSING=0)
@@ -40,8 +48,8 @@ target_compile_definitions(ball_pit PRIVATE
 # note : cxx_std_* features were added in CMake 3.8.2
 target_compile_features(ball_pit PRIVATE cxx_std_20)
 
-target_compile_options(ball_pit PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:
-        /W4 /WX /permissive- /Z7 /MT /MP /Bt+>)
+# target_compile_options(ball_pit PRIVATE
+#     $<$<CXX_COMPILER_ID:MSVC>:
+#         /W4 /WX /permissive- /Z7 /MT /MP /Bt+>)
 
 set_target_properties(ball_pit PROPERTIES INTERPROCEDURAL_OPTIMIZATION ON)

@@ -116,7 +116,7 @@ public:
 
     enum class ImpactWorldResult
     {
-        None,
+        NoneX,
         Left,
         Right,
         Top,

@@ -11,3 +11,8 @@ git submodule update --init --recursive
 
 git checkout ce90e45245bf7981fd797d992389693bdd586c0b
 
+sudo dnf install libX11-devel -y
+
+sudo dnf install glew-devel  freetype-devel libpng-devel -y
+
+<!-- SDL2-devel SDL2_image-devel glm-devel -->

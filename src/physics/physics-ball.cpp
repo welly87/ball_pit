@@ -64,12 +64,12 @@ auto PhysicsBall::impacts_world_bounds(const PhysicsBall& ball, const World& wor
     {
         return Top;
     }
-    return None;
+    return NoneX;
 }
 
 void PhysicsBall::world_collision_response(ImpactWorldResult result, PhysicsBall* ball, const World& world)
 {
-    assert(impacts_world_bounds(*ball, world) == result && result != ImpactWorldResult::None);
+    assert(impacts_world_bounds(*ball, world) == result && result != ImpactWorldResult::NoneX);
     PhysicsPoint normal{ };
     switch (result)
     {

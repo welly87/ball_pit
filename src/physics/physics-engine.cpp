@@ -61,7 +61,7 @@ void PhysicsEngine::update(float dt, World* world)
                 ball.position() += ball.velocity() * ball.physics_time_remaining();
 
                 auto result = PhysicsBall::impacts_world_bounds(ball, *world);
-                if (result != PhysicsBall::ImpactWorldResult::None)
+                if (result != PhysicsBall::ImpactWorldResult::NoneX)
                 {
                     PhysicsBall::world_collision_response(result, &ball, *world);
                 }
